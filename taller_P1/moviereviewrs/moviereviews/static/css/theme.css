@@ -1,0 +1,239 @@
+/* =========
+   PALETA (variables)
+   ========= */
+:root {
+  --dutch-white: #fcecc9;         /* fondo suave */
+  --cherry-blossom-pink: #fcb0b3; /* acentos suaves */
+  --imperial-red: #f93943;        /* color principal (acciones) */
+  --carolina-blue: #7eb2dd;       /* acento secundario */
+  --yinmn-blue: #445e93;          /* azul profundo, navbar, títulos */
+
+  --bg-body: #0f172a;
+  --text-main: #101827;
+  --text-muted: #6b7280;
+  --radius-lg: 18px;
+  --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.25);
+}
+
+/* =========
+   BODY Y FONDO
+   ========= */
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-body);
+  position: relative;
+}
+
+/* fondo degradado */
+.app-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at top left, rgba(252, 236, 201, 0.35), transparent 55%),
+              radial-gradient(circle at top right, rgba(124, 178, 221, 0.35), transparent 55%),
+              radial-gradient(circle at bottom, rgba(249, 57, 67, 0.18), transparent 55%);
+}
+
+/* =========
+   HEADER / NAVBAR
+   ========= */
+.app-header {
+  background: linear-gradient(90deg, var(--yinmn-blue), var(--imperial-red));
+}
+
+.app-navbar {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+.logo-icon {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  font-size: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  padding-inline: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #ffffff;
+}
+
+.nav-link-highlight {
+  position: relative;
+}
+
+.nav-link-highlight::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.15rem;
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--cherry-blossom-pink);
+  transform: translateX(-50%);
+}
+
+/* botón del navbar */
+.navbar .btn-outline-light {
+  border-radius: 999px;
+  border-width: 1.5px;
+  padding-inline: 1rem;
+  font-size: 0.9rem;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: var(--yinmn-blue);
+}
+
+/* =========
+   MAIN & FOOTER
+   ========= */
+.app-main {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.app-footer {
+  color: rgba(248, 250, 252, 0.8);
+  background: transparent;
+}
+
+/* =========
+   BOTONES
+   ========= */
+.btn-primary {
+  background: var(--imperial-red);
+  border-color: var(--imperial-red);
+  box-shadow: 0 8px 18px rgba(249, 57, 67, 0.35);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #d4262f;
+  border-color: #d4262f;
+}
+
+.btn-soft {
+  background-color: var(--dutch-white);
+  color: var(--yinmn-blue);
+  border-radius: 999px;
+  border: none;
+  padding-inline: 1.1rem;
+  font-weight: 500;
+}
+
+.btn-soft:hover {
+  background-color: var(--cherry-blossom-pink);
+  color: #3f2330;
+}
+
+.bg-soft-chip {
+  background-color: rgba(252, 236, 201, 0.6);
+  color: #3f2330;
+}
+
+/* =========
+   CARDS
+   ========= */
+.card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.card .card-title {
+  color: var(--yinmn-blue);
+}
+
+/* =========
+   RECOMENDADOR
+   ========= */
+.recs-hero {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  padding: 1.8rem 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.recs-title {
+  font-weight: 700;
+  font-size: clamp(1.65rem, 2vw + 1rem, 2.1rem);
+  color: var(--yinmn-blue);
+}
+
+.recs-subtitle {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.recs-form {
+  margin-top: 1rem;
+}
+
+.recs-input {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding-inline: 1.3rem;
+  background-color: rgba(252, 252, 253, 0.95);
+}
+
+.recs-input:focus {
+  border-color: var(--carolina-blue);
+  box-shadow: 0 0 0 0.2rem rgba(126, 178, 221, 0.35);
+}
+
+/* resultados */
+.recs-results {
+  margin-top: 2.25rem;
+}
+
+.recs-card {
+  backdrop-filter: blur(8px);
+}
+
+.recs-poster {
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-poster {
+  background: linear-gradient(135deg, rgba(252, 236, 201, 0.5), rgba(124, 178, 221, 0.35));
+  font-size: 2rem;
+}
+
+.bg-similarity {
+  background: var(--carolina-blue);
+}
+
+/* =========
+   UTILIDADES
+   ========= */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .recs-hero {
+    padding: 1.4rem 1.2rem;
+  }
+}

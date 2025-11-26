@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Eliminar reseña</h3>
+<p>¿Seguro que quieres eliminar esta reseña?</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Sí, eliminar</button>
+  <a class="btn btn-secondary" href="{% url 'movie_detail' object.movie.id %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+*.pem
+*.key
+*.log
+__pycache__/
+*.pyc
+*.db
+venv/
+.env
+nohup.out

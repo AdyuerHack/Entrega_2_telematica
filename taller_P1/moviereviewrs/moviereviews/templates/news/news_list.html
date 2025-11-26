@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Noticias</h2>
+<ul class="list-group">
+  {% for n in news_list %}
+    <li class="list-group-item">
+      <div class="d-flex justify-content-between">
+        <strong>{{ n.headline }}</strong>
+        <span class="text-muted">{{ n.published_at }}</span>
+      </div>
+      <p class="mb-0">{{ n.story }}</p>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No hay noticias.</li>
+  {% endfor %}
+</ul>
+
+{% if is_paginated %}
+<nav class="mt-4">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+    {% endif %}
+    <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}

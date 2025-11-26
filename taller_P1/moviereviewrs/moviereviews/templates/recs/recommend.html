@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recomendador IA · Movie Reviews{% endblock %}
+
+{% block content %}
+<section class="recs-hero">
+  <h1 class="recs-title">Recomendador IA</h1>
+  <p class="recs-subtitle">
+    Escribe una descripción y te recomendaremos la película más cercana.<br>
+    Ejemplos: <span class="badge rounded-pill bg-soft-chip">“Película de la segunda guerra mundial”</span>,
+    <span class="badge rounded-pill bg-soft-chip">“sci-fi con viajes en el tiempo”</span>,
+    <span class="badge rounded-pill bg-soft-chip">“animada sobre música y familia”</span>.
+  </p>
+
+  <form method="get" class="row g-2 recs-form mt-3">
+    <div class="col-md-9">
+      <input
+        type="text"
+        name="q"
+        class="form-control form-control-lg recs-input"
+        value="{{ query }}"
+        placeholder="¿Qué tipo de película quieres ver hoy?"
+      >
+    </div>
+    <div class="col-md-3 d-grid">
+      <button class="btn btn-primary btn-lg">Recomendar</button>
+    </div>
+  </form>
+</section>
+
+{% if results %}
+  <section class="recs-results mt-4">
+    <h2 class="h5 text-muted mb-3">Resultados recomendados</h2>
+
+    {% for item in results %}
+      {% with movie=item.movie score=item.score %}
+      <article class="card recs-card mb-4">
+        <div class="row g-0">
+          <div class="col-md-3 d-none d-md-block">
+            {% if movie.image_url %}
+              <img src="{{ movie.image_url }}" class="img-fluid rounded-start recs-poster" alt="{{ movie.name }}">
+            {% else %}
+              <div class="recs-poster placeholder-poster d-flex align-items-center justify-content-center">
+                <span>🎞️</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h4 mb-0">{{ movie.name }}</h3>
+                <span class="badge bg-similarity">
+                  sim {{ score }}
+                </span>
+              </div>
+              <p class="card-text text-muted mb-3">
+                {{ movie.description }}
+              </p>
+              <div class="d-flex gap-2">
+                {% if movie.url %}
+                  <a class="btn btn-soft" href="{{ movie.url }}" target="_blank">Ver enlace</a>
+                {% endif %}
+                <a class="btn btn-outline-secondary btn-sm" href="/movies/">Ver más películas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endwith %}
+    {% endfor %}
+  </section>
+{% elif query %}
+  <div class="alert alert-warning mt-4">
+    No encontramos resultados para <strong>{{ query }}</strong>. Prueba con otra descripción o sé un poco más específico.
+  </div>
+{% endif %}
+{% endblock %}
